@@ -17,3 +17,15 @@
   border-radius: 8px;
   margin: 2px;
 }
+
+.Tile:hover {
+  background-color: #e91e63;
+}
+
+.empty {
+  background-color: transparent;
+}
+
+.empty:hover {
+  background-color: transparent;
+}
