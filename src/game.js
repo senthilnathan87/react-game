@@ -9,12 +9,21 @@ export default class Game extends React.Component {
     };
   }
 
+  clickHandler = (row, col) => {
+    console.log(row, col);
+  };
+
   render() {
     return (
       <>
-        <Row numbers={this.state.numbers[0]} />
-        <Row numbers={this.state.numbers[1]} />
-        <Row numbers={this.state.numbers[2]} />
+        {this.state.numbers.map((item, index) => (
+          <Row
+            numbers={item}
+            key={index}
+            row={index}
+            clickHandler={this.clickHandler}
+          />
+        ))}
       </>
     );
   }
@@ -23,8 +32,14 @@ export default class Game extends React.Component {
 function Row(props) {
   return (
     <div>
-      {props.numbers.map(item => (
-        <Tile key={item} num={item} />
+      {props.numbers.map((item, index) => (
+        <Tile
+          key={index}
+          row={props.row}
+          col={index}
+          num={item}
+          clickHandler={props.clickHandler}
+        />
       ))}
     </div>
   );
@@ -32,7 +47,10 @@ function Row(props) {
 
 function Tile(props) {
   return (
-    <div className="Tile">
+    <div
+      className="Tile"
+      onClick={props.clickHandler.bind(this, props.row, props.col)}
+    >
       {props.num > 0 && <span>{props.num}</span>}
       {props.num === 0 && <span />}
     </div>
