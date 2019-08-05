@@ -34,7 +34,6 @@ export default class Game extends React.Component {
     }
     return false;
   }
-
   clickHandler = (row, col) => {
     if (this.state.isFinalState) {
       return;
@@ -62,11 +61,9 @@ export default class Game extends React.Component {
       this.updateMessage("Invalid Move :(");
     }
   };
-
   updateMessage(message) {
     this.setState({ message });
   }
-
   render() {
     return (
       <>
